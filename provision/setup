@@ -1,0 +1,29 @@
+#!/bin/bash
+set -euo pipefail
+
+echo "Lets rock"
+
+user=ubuntu
+home="/home/$user"
+provision_dir="/vagrant/provision"
+
+# copy files to home
+for rc in inputrc morerc; do
+    cp "${provision_dir}/${rc}" "${home}/.${rc}"
+    chown $user: "${home}/.${rc}"
+done
+
+# A persistent bash_history
+ln -s /vagrant/bash_history "${home}/.bash_history"
+
+# source morerc on login
+echo "[[ -f ~/.morerc ]] && source ~/.morerc" >> "${home}/.profile"
+
+# apt-get installation
+echo "lets update apt and get some packages"
+export DEBIAN_FRONTEND=noninteractive
+(
+    apt-get update
+    apt-get -y install --no-install-recommends \
+        ack-grep curl git p7zip-full tig tree unzip vim
+) >/dev/null
