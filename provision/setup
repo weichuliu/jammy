@@ -27,3 +27,7 @@ export DEBIAN_FRONTEND=noninteractive
     apt-get -y install --no-install-recommends \
         ack-grep curl git p7zip-full tig tree unzip vim
 ) >/dev/null
+
+# iTerm2 integration
+echo "Setting up iTerm2 integration"
+curl -s -L https://iterm2.com/misc/install_shell_integration.sh | HOME="${home}" sudo -u $user bash >/dev/null
