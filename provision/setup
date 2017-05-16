@@ -30,4 +30,7 @@ export DEBIAN_FRONTEND=noninteractive
 
 # iTerm2 integration
 echo "Setting up iTerm2 integration"
-curl -s -L https://iterm2.com/misc/install_shell_integration.sh | HOME="${home}" sudo -u $user bash >/dev/null
+curl -s -L https://iterm2.com/misc/install_shell_integration.sh | sudo -u $user env -i HOME="${home}" USER="${user}" bash >/dev/null
+
+# Packages installation
+sudo -u $user env -i HOME="${home}" USER="${user}" bash "${provision_dir}/setup-packages"

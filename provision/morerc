@@ -8,3 +8,21 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # bash prompt
 PS1='\[\033[00;91m\]\u\[\033[01;34m\] \w\[\033[00m\]$(__git_ps1) \$ '
+
+
+# Language PATH
+
+# Java
+export PATH="$PATH:/usr/local/jdk/bin"
+
+# Go
+export PATH="$PATH:/usr/local/go/bin"
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
+
+# Ruby
+export PATH="$PATH:$HOME/.rbenv/bin"
+eval "$(~/.rbenv/bin/rbenv init -)"
+
+# Nodejs
+export PATH="$PATH:/usr/local/node/bin"

@@ -1,0 +1,23 @@
+#!/bin/bash
+set -euo pipefail
+
+## Language installations
+pkg_dir="/vagrant/packages"
+
+# Java
+sudo mkdir /usr/local/jdk
+sudo tar xzf "${pkg_dir}"/jdk-*-linux-x64.tar.gz --strip-components=1 -C /usr/local/jdk
+# Go
+sudo mkdir /usr/local/go
+sudo tar xzf "${pkg_dir}"/go*.linux-amd64.tar.gz --strip-components=1 -C /usr/local/go
+# Ruby
+git clone --depth=1 https://github.com/rbenv/rbenv.git ~/.rbenv
+~/.rbenv/bin/rbenv init - >/dev/null
+tar xjf "${pkg_dir}"/ruby-*.tar.bz2 -C ~/.rbenv/versions/ --transform s/^ruby-//
+~/.rbenv/bin/rbenv global $(ls ~/.rbenv/versions)
+# Clojure
+sudo curl -s https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -o /usr/local/bin/lein
+sudo chmod a+x /usr/local/bin/lein
+# Nodejs
+sudo mkdir /usr/local/node
+sudo tar xJf /vagrant/packages/node-*-linux-x64.tar.xz --strip-components=1 -C /usr/local/node
