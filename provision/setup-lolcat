@@ -1,0 +1,15 @@
+#!/bin/bash
+
+cat <<XX | sudo tee /etc/update-motd.d/233-lolcat >/dev/null
+#!/bin/sh
+/usr/games/fortune | /usr/games/cowsay | PATH=/home/ubuntu/.rbenv/shims:\$PATH lolcat -f
+XX
+
+sudo chmod +x /etc/update-motd.d/233-lolcat
+
+DEBIAN_FRONTEND=noninteractive sudo apt-get -y install --no-install-recommends \
+    fortune fortunes cowsay >/dev/null
+
+export PATH="$PATH:$HOME/.rbenv/bin"
+eval "$(rbenv init -)"
+gem install --no-document lolcat
