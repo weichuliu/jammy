@@ -10,3 +10,13 @@ ruby-2.4.1.tar.bz2:
 
 node-v7.10.0-linux-x64.tar.xz:
   https://nodejs.org/dist/v7.10.0/node-v7.10.0-linux-x64.tar.xz
+
+# Python compiled by me
+# sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev
+# export CFLAGS='-O2'
+# export py_version=3.6.2
+# pyenv install ${py_version}
+# cd /home/ubuntu/.pyenv/versions
+# tar cjf /vagrant/packages/python-${py_version}.tar.bz2 ${py_version}
+python-3.6.2.tar.bz2:
+  ~

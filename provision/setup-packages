@@ -15,6 +15,15 @@ git clone --depth=1 https://github.com/rbenv/rbenv.git ~/.rbenv
 ~/.rbenv/bin/rbenv init - >/dev/null
 tar xjf "${pkg_dir}"/ruby-*.tar.bz2 -C ~/.rbenv/versions/ --transform s/^ruby-//
 ~/.rbenv/bin/rbenv global $(ls ~/.rbenv/versions)
+# Python
+git clone --depth=1 https://github.com/pyenv/pyenv.git ~/.pyenv
+~/.pyenv/bin/pyenv init - >/dev/null
+if ls "${pkg_dir}"/python-*.tar.bz2 2>/dev/null; then
+    tar xjf "${pkg_dir}"/python-*.tar.bz2 -C ~/.pyenv/versions
+    ~/.pyenv/bin/pyenv global $(ls ~/.pyenv/versions)
+    echo "Pyenv Python $(ls ~/.pyenv/versions) is installed"
+fi
+
 # Clojure
 sudo curl -s https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -o /usr/local/bin/lein
 sudo chmod a+x /usr/local/bin/lein
