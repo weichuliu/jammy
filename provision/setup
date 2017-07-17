@@ -31,6 +31,8 @@ export DEBIAN_FRONTEND=noninteractive
 # iTerm2 integration
 echo "Setting up iTerm2 integration"
 curl -s -L https://iterm2.com/misc/install_shell_integration.sh | sudo -u $user env -i HOME="${home}" USER="${user}" bash >/dev/null
+# Use bash-preexec version, per gitlab.com/gnachman/iterm2/issues/5787
+curl -s -L https://iterm2.com/shell_integration/bash > "${home}/.iterm2_shell_integration.bash"
 
 # Packages installation
 sudo -u $user env -i HOME="${home}" USER="${user}" bash "${provision_dir}/setup-packages"
