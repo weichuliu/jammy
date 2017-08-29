@@ -1,15 +1,15 @@
 #!/bin/bash
 
-cat <<XX | sudo tee /etc/update-motd.d/233-lolcat >/dev/null
-#!/bin/sh
-/usr/games/fortune | /usr/games/cowsay | PATH=/home/vagrant/.rbenv/shims:\$PATH lolcat -f
-XX
+# cat <<XX | sudo tee /etc/update-motd.d/233-lolcat >/dev/null
+# #!/bin/sh
+# /usr/games/fortune | /usr/games/cowsay | PATH=/home/vagrant/.rbenv/shims:\$PATH lolcat -f
+# XX
 
-sudo chmod +x /etc/update-motd.d/233-lolcat
+# sudo chmod +x /etc/update-motd.d/233-lolcat
 
-sudo DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends \
-    fortune fortunes cowsay >/dev/null
+# sudo DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends \
+#     fortune fortunes cowsay >/dev/null
 
-export PATH="$PATH:$HOME/.rbenv/bin"
-eval "$(rbenv init -)"
-gem install --no-document lolcat
+# export PATH="$PATH:$HOME/.rbenv/bin"
+# eval "$(rbenv init -)"
+# gem install --no-document lolcat

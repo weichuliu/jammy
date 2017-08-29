@@ -15,8 +15,11 @@ sudo tar xzf "${pkg_dir}"/go*.linux-amd64.tar.gz --strip-components=1 -C /usr/lo
 # Ruby
 git clone --depth=1 https://github.com/rbenv/rbenv.git ~/.rbenv
 ~/.rbenv/bin/rbenv init - >/dev/null
-tar xjf "${pkg_dir}"/ruby-*.tar.bz2 -C ~/.rbenv/versions/ --transform s/^ruby-//
+# Self packaged non-standard ruby 2.6.3 on CentOS7
+tar xjf "${pkg_dir}"/ruby-2.6.3.tar.bz2 -C ~/.rbenv/versions/ --transform s/^ruby-//
 ~/.rbenv/bin/rbenv global $(ls ~/.rbenv/versions)
+
+~/.rbenv/versions/2.6.3/bin/gem install --no-document fpm
 
 # Python
 git clone --depth=1 https://github.com/pyenv/pyenv.git ~/.pyenv

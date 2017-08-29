@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/focal64"
+  config.vm.box = "centos/7"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -26,7 +26,7 @@ Vagrant.configure("2") do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.network "private_network", ip: "192.168.33.12"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -49,20 +49,19 @@ Vagrant.configure("2") do |config|
 
     # Customize the amount of memory on the VM:
     vb.memory = "2048"
-
-    # Disable default pwd console.log
-    # ~/.vagrant.d/boxes/ubuntu-VAGRANTSLASH-focal64/VERSION/virtualbox/Vagrantfile
-    vb.customize [ "modifyvm", :id, "--uartmode1", "file", "/dev/null" ]
   end
 
   # config `vbguest' plugin if existed
   if Vagrant.has_plugin?("vagrant-vbguest")
     # set auto_update to false, if you do NOT want to check the correct
     # additions version when booting this machine
-    config.vbguest.auto_update = false
+    config.vbguest.auto_update = true
     # do NOT download the iso file from a webserver
     config.vbguest.no_remote = true
   end
+
+  # Fix CentOS 7 sync folder
+  config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
 
   #
   # View the documentation for the provider you are using for more

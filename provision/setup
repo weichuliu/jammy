@@ -17,25 +17,24 @@ done
 ln -s /vagrant/bash_history "${home}/.bash_history"
 
 # source morerc on login
-echo "[[ -f ~/.morerc ]] && source ~/.morerc" >> "${home}/.profile"
+echo "[[ -f ~/.morerc ]] && source ~/.morerc" >> "${home}/.bash_profile"
 
-# apt-get installation
-echo "lets update apt and get some packages"
-export DEBIAN_FRONTEND=noninteractive
+# yum installation
+echo "lets update yum and get some packages"
 (
-    apt-get update
-    apt-get -y install --no-install-recommends \
-        ack-grep curl git libssl-dev p7zip-full ripgrep tig tree unzip vim
-) >/dev/null
+    rpm -Uvh https://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-12.noarch.rpm
+    yum install -y \
+        ack curl git libyaml p7zip rpm-build tig tree unzip vim zlib-devel
+) &>/dev/null
 
 # iTerm2 integration
 echo "Setting up iTerm2 integration"
-curl -s -L https://iterm2.com/misc/install_shell_integration.sh | sudo -u $user env -i HOME="${home}" USER="${user}" bash >/dev/null
+curl -s -L https://iterm2.com/misc/install_shell_integration.sh | sudo -u $user env -i HOME="${home}" USER="${user}" PATH="${PATH}" bash >/dev/null
 
 # Packages installation
-sudo -u $user env -i HOME="${home}" USER="${user}" bash "${provision_dir}/setup-packages"
+sudo -u $user env -i HOME="${home}" USER="${user}" PATH="${PATH}" bash "${provision_dir}/setup-packages"
 
 # Lolcat banner
-sudo -u $user env -i HOME="${home}" USER="${user}" bash "${provision_dir}/setup-lolcat"
+# sudo -u $user env -i HOME="${home}" USER="${user}" bash "${provision_dir}/setup-lolcat"
 
 echo "All Good 👌"

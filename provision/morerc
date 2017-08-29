@@ -7,7 +7,7 @@ shopt -s histappend                      # append to history, don't overwrite it
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # bash prompt
-PS1='\[\033[00;91m\]\u\[\033[01;34m\] \w\[\033[00m\]$(__git_ps1) \$ '
+PS1='\[\033[00;93m\]CentOS\[\033[01;34m\] \w\[\033[00m\]$(__git_ps1) \$ '
 
 # Language PATH
 
@@ -29,3 +29,6 @@ if ls ~/.pyenv/versions/* >/dev/null 2>&1; then
   export PATH="$PATH:$HOME/.pyenv/bin"
   eval "$(~/.pyenv/bin/pyenv init -)"
 fi
+
+# CentOS __git_ps1
+. /usr/share/git-core/contrib/completion/git-prompt.sh
