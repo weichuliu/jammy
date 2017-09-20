@@ -54,6 +54,16 @@ Vagrant.configure("2") do |config|
     # ~/.vagrant.d/boxes/ubuntu-VAGRANTSLASH-xenial64/VERSION/virtualbox/Vagrantfile
     vb.customize [ "modifyvm", :id, "--uartmode1", "file", "/dev/null" ]
   end
+
+  # config `vbguest' plugin if existed
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    # set auto_update to false, if you do NOT want to check the correct
+    # additions version when booting this machine
+    config.vbguest.auto_update = false
+    # do NOT download the iso file from a webserver
+    config.vbguest.no_remote = true
+  end
+
   #
   # View the documentation for the provider you are using for more
   # information on available options.
