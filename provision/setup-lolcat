@@ -7,7 +7,7 @@ XX
 
 sudo chmod +x /etc/update-motd.d/233-lolcat
 
-DEBIAN_FRONTEND=noninteractive sudo apt-get -y install --no-install-recommends \
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends \
     fortune fortunes cowsay >/dev/null
 
 export PATH="$PATH:$HOME/.rbenv/bin"

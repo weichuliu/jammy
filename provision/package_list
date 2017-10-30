@@ -2,8 +2,8 @@
 jdk-8u131-linux-x64.tar.gz:
   'wget -c --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz'
 
-go1.8.1.linux-amd64.tar.gz:
-  https://storage.googleapis.com/golang/go1.8.1.linux-amd64.tar.gz
+go1.9.2.linux-amd64.tar.gz:
+  https://storage.googleapis.com/golang/go1.9.2.linux-amd64.tar.gz
 
 ruby-2.4.1.tar.bz2:
   https://s3.amazonaws.com/travis-rubies/binaries/ubuntu/14.04/x86_64/ruby-2.4.1.tar.bz2
@@ -14,9 +14,12 @@ node-v7.10.0-linux-x64.tar.xz:
 # Python compiled by me
 # sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev
 # export CFLAGS='-O2'
-# export py_version=3.6.2
-# pyenv install ${py_version}
-# cd /home/ubuntu/.pyenv/versions
-# tar cjf /vagrant/packages/python-${py_version}.tar.bz2 ${py_version}
+# for py_version in 2.7.14 3.6.2; do
+#   pyenv install ${py_version}
+#   cd /home/ubuntu/.pyenv/versions
+#   tar cjf /vagrant/packages/python-${py_version}.tar.bz2 ${py_version}
+# done
+python-2.7.14.tar.bz2:
+  ~
 python-3.6.2.tar.bz2:
   ~

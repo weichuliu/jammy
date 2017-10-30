@@ -18,10 +18,13 @@ tar xjf "${pkg_dir}"/ruby-*.tar.bz2 -C ~/.rbenv/versions/ --transform s/^ruby-//
 # Python
 git clone --depth=1 https://github.com/pyenv/pyenv.git ~/.pyenv
 ~/.pyenv/bin/pyenv init - >/dev/null
-if ls "${pkg_dir}"/python-*.tar.bz2 2>/dev/null; then
-    tar xjf "${pkg_dir}"/python-*.tar.bz2 -C ~/.pyenv/versions
+if ls "${pkg_dir}"/python-*.tar.bz2 &>/dev/null; then
+    for py_pkg in $(ls "${pkg_dir}"/python-*.tar.bz2); do
+        tar xjf "$py_pkg" -C ~/.pyenv/versions
+    done
     ~/.pyenv/bin/pyenv global $(ls ~/.pyenv/versions)
-    echo "Pyenv Python $(ls ~/.pyenv/versions) is installed"
+    echo "Python is installed to Pyenv:"
+    echo $(ls ~/.pyenv/versions)
 fi
 
 # Clojure
