@@ -2,7 +2,7 @@
 
 cat <<XX | sudo tee /etc/update-motd.d/233-lolcat >/dev/null
 #!/bin/sh
-/usr/games/fortune | /usr/games/cowsay | PATH=/home/ubuntu/.rbenv/shims:\$PATH lolcat -f
+/usr/games/fortune | /usr/games/cowsay | PATH=/home/vagrant/.rbenv/shims:\$PATH lolcat -f
 XX
 
 sudo chmod +x /etc/update-motd.d/233-lolcat
