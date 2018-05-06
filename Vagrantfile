@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "ubuntu/bionic64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -51,7 +51,7 @@ Vagrant.configure("2") do |config|
     vb.memory = "2048"
 
     # Disable default pwd console.log
-    # ~/.vagrant.d/boxes/ubuntu-VAGRANTSLASH-xenial64/VERSION/virtualbox/Vagrantfile
+    # ~/.vagrant.d/boxes/ubuntu-VAGRANTSLASH-bionic64/VERSION/virtualbox/Vagrantfile
     vb.customize [ "modifyvm", :id, "--uartmode1", "file", "/dev/null" ]
   end
 
