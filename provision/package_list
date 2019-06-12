@@ -6,10 +6,18 @@ go1.12.6.linux-amd64.tar.gz:
   https://dl.google.com/go/go1.12.6.linux-amd64.tar.gz
 
 ruby-2.6.3.tar.bz2:
+  # ubuntu
   https://s3.amazonaws.com/travis-rubies/binaries/ubuntu/18.04/x86_64/ruby-2.6.3.tar.bz2
+  # centos
+  #   https://gist.github.com/soardex/e95cdc230d1ac5b824b3
 
-# Python compiled by me
-# sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev
+
+## Python compiled by me
+# if grep -q Ubuntu /etc/os-release; then
+#     sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev
+# elif grep -q CentOS /etc/os-release; then
+#     sudo yum install -y zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel
+# fi
 # export CFLAGS='-O2'
 # for py_version in 2.7.16 3.7.3; do
 #   pyenv install ${py_version}
