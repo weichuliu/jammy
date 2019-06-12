@@ -25,7 +25,7 @@ export DEBIAN_FRONTEND=noninteractive
 (
     apt-get update
     apt-get -y install --no-install-recommends \
-        ack-grep curl git p7zip-full tig tree unzip vim
+        ack-grep curl git p7zip-full tig tree unzip vim libssl-dev
 ) >/dev/null
 
 # iTerm2 integration
