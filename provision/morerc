@@ -30,6 +30,3 @@ if ls ~/.pyenv/versions/* >/dev/null 2>&1; then
   export PATH="$PATH:$HOME/.pyenv/bin"
   eval "$(~/.pyenv/bin/pyenv init -)"
 fi
-
-# Nodejs
-export PATH="$PATH:/usr/local/node/bin"
