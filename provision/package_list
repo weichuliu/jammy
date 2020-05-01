@@ -1,13 +1,13 @@
 # Refer to gist.github.com/P7h/9741922
-jdk-12.0.1_linux-x64_bin.tar.gz:
-  'wget -c --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/12.0.1+12/69cfe15208a647278a19ef0990eea691/jdk-12.0.1_linux-x64_bin.tar.gz'
+jdk:
+  'wget -c --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/14.0.1+7/664493ef4a6946b186ff29eb326336a2/jdk-14.0.1_linux-x64_bin.tar.gz'
 
-go1.12.6.linux-amd64.tar.gz:
-  https://dl.google.com/go/go1.12.6.linux-amd64.tar.gz
+go:
+  https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz
 
-ruby-2.6.3.tar.bz2:
+ruby:
   # ubuntu
-  https://s3.amazonaws.com/travis-rubies/binaries/ubuntu/18.04/x86_64/ruby-2.6.3.tar.bz2
+  https://s3.amazonaws.com/travis-rubies/binaries/ubuntu/20.04/x86_64/ruby-2.7.1.tar.bz2
   # centos
   #   https://gist.github.com/soardex/e95cdc230d1ac5b824b3
 
