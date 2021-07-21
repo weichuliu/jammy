@@ -27,5 +27,5 @@ eval "$(~/.rbenv/bin/rbenv init -)"
 # Since we are using home compiled package, there might not be usable pyenv python
 if ls ~/.pyenv/versions/* >/dev/null 2>&1; then
   export PATH="$PATH:$HOME/.pyenv/bin"
-  eval "$(~/.pyenv/bin/pyenv init -)"
+  eval "$(~/.pyenv/bin/pyenv init --path)"
 fi
