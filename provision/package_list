@@ -1,30 +1,32 @@
-# Refer to gist.github.com/P7h/9741922
 jdk:
-  'wget -c --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/14.0.1+7/664493ef4a6946b186ff29eb326336a2/jdk-14.0.1_linux-x64_bin.tar.gz'
+  https://download.oracle.com/java/18/latest/jdk-18_linux-x64_bin.tar.gz
 
 go:
-  https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz
+  https://dl.google.com/go/go1.18.2.linux-amd64.tar.gz
 
-ruby:
-  # ubuntu
-  https://s3.amazonaws.com/travis-rubies/binaries/ubuntu/20.04/x86_64/ruby-2.7.1.tar.bz2
-  # centos
-  #   https://gist.github.com/soardex/e95cdc230d1ac5b824b3
+ruby: |
+  if grep -q Ubuntu /etc/os-release; then
+      sudo apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev
+  elif grep -q CentOS /etc/os-release; then
+      sudo yum install -y gcc-6 bzip2 openssl-devel libyaml-devel libffi-devel readline-devel zlib-devel gdbm-devel ncurses-devel
+  fi
+  mkdir -p "$(rbenv root)"/plugins
+  git clone --depth=1 https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+  export CFLAGS='-O2'
+  rb_version=3.1.2
+  rbenv install $rb_version
+  cd ~/.rbenv/versions
+  tar cjf /vagrant/packages/ruby-${rb_version}.tar.bz2 ${rb_version}
 
-
-## Python compiled by me
-# if grep -q Ubuntu /etc/os-release; then
-#     sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev
-# elif grep -q CentOS /etc/os-release; then
-#     sudo yum install -y zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel
-# fi
-# export CFLAGS='-O2'
-# for py_version in 2.7.16 3.7.3; do
-#   pyenv install ${py_version}
-#   cd ~/.pyenv/versions
-#   tar cjf /vagrant/packages/python-${py_version}.tar.bz2 ${py_version}
-# done
-python-2.7.16.tar.bz2:
-  ~
-python-3.7.3.tar.bz2:
-  ~
+python: |
+  if grep -q Ubuntu /etc/os-release; then
+      sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev
+  elif grep -q CentOS /etc/os-release; then
+      sudo yum install -y zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel
+  fi
+  export CFLAGS='-O2'
+  for py_version in 2.7.18 3.10.4; do
+    pyenv install ${py_version}
+    cd ~/.pyenv/versions
+    tar cjf /vagrant/packages/python-${py_version}.tar.bz2 ${py_version}
+  done
